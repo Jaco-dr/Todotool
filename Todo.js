@@ -1,10 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const root = document.getElementById("root");
-    root.innerHTML = `<div class="container">
-        <input type="text" id="taskInput" placeholder="Nieuwe taak">
-        <button id="addTask">Toevoegen</button>
-        <ul id="taskList"></ul>
-    </div>`;
+    console.log("Script is geladen!"); // Debugging
 
     const taskInput = document.getElementById("taskInput");
     const addTaskBtn = document.getElementById("addTask");
@@ -12,11 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     addTaskBtn.addEventListener("click", () => {
         if (taskInput.value.trim() === "") return;
+
         const li = document.createElement("li");
         li.textContent = taskInput.value;
+
         const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Verwijderen";
+        deleteBtn.textContent = "X";
         deleteBtn.addEventListener("click", () => li.remove());
+
         li.appendChild(deleteBtn);
         taskList.appendChild(li);
         taskInput.value = "";
