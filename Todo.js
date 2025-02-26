@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("✅ Script is geladen!"); // Debugging
+    console.log("Script is geladen!"); // Debugging
 
     const taskInput = document.getElementById("taskInput");
     const addTaskBtn = document.getElementById("addTask");
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         li.textContent = taskInput.value;
 
         const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "❌";
+        deleteBtn.textContent = "X";
         deleteBtn.addEventListener("click", () => li.remove());
 
         li.appendChild(deleteBtn);
