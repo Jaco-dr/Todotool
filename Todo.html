@@ -1,0 +1,67 @@
+/* HTML (index.html) */
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Webtool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+/* CSS (styles.css) */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+/* JavaScript (script.js) */
+document.addEventListener("DOMContentLoaded", () => {
+    const root = document.getElementById("root");
+    root.innerHTML = `<div class="container">
+        <input type="text" id="taskInput" placeholder="Nieuwe taak">
+        <button id="addTask">Toevoegen</button>
+        <ul id="taskList"></ul>
+    </div>`;
+
+    const taskInput = document.getElementById("taskInput");
+    const addTaskBtn = document.getElementById("addTask");
+    const taskList = document.getElementById("taskList");
+
+    addTaskBtn.addEventListener("click", () => {
+        if (taskInput.value.trim() === "") return;
+        const li = document.createElement("li");
+        li.textContent = taskInput.value;
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Verwijderen";
+        deleteBtn.addEventListener("click", () => li.remove());
+        li.appendChild(deleteBtn);
+        taskList.appendChild(li);
+        taskInput.value = "";
+    });
+});
